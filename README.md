@@ -1,6 +1,6 @@
 # Companion code: commuting finite quasi-orders
 
-Code and Lean files for the paper *The probability that two random Alexandrov interior operators commute is $2^{-\Theta(n)}$*.
+Code and Lean files for the paper *The probability that two random finite topologies commute is $2^{-\Theta(n)}$*.
 The repository computes the exact numbers of commuting pairs of quasi-orders and of Alexandrov interior operators for $n\le 6$, checks them independently, tests the equal-layers family behind the lower bound, and formalises the structural statements in Lean 4 without Mathlib.
 
 ## Reproducing the paper
@@ -9,8 +9,8 @@ Commands are run from the repository root after the setup below. Times are wall-
 
 | Paper | Command | Expected output | Time |
 |---|---|---|---|
-| Section 4, exact counts, $n\le5$ | `python -m counts.orbit_count --n-max 5` | rows for $n=1..5$, e.g. `n=5: T=6942 io=9053 t=9545484 cio=14681479`; writes `results/counts.csv` | 1 s |
-| Section 4, Table 1, $n\le6$ | `python -m counts.orbit_count --n-max 6` | adds `n=6: T=209527 io=257151 t=3898813457 cio=5478474381`; $c=4,41,1179,86342,14681479,5478474381$ and $t=1,16,577,49871,9545484,3898813457$ are asserted | about 3 min (about 40 CPU-minutes on one core, `--workers 1`) |
+| Section 4, exact counts, $n\le5$ | `python -m counts.orbit_count --n-max 5` | rows for $n=1..5$, e.g. `n=5: T=6942 io=9053 t=9545484 cio=14681479`; no file is written | 1 s |
+| Section 4, Table 1, $n\le6$ | `python -m counts.orbit_count --n-max 6 --out results/counts.csv` | adds `n=6: T=209527 io=257151 t=3898813457 cio=5478474381` and writes `results/counts.csv`; $c=4,41,1179,86342,14681479,5478474381$ and $t=1,16,577,49871,9545484,3898813457$ are asserted | about 3 min (about 40 CPU-minutes on one core, `--workers 1`) |
 | Section 4, independent check, $n\le5$ | `python -m counts.brute_force` | same $\mathrm{io},T,\mathrm{cio},t$ for $n\le5$ from the definition $A(B(S))=B(A(S))$, and $t$ again from $R\circ S=S\circ R$; last line `brute force agrees ...` | 30 s |
 | Section 3, Proposition on the criterion | same two commands | the fixed-point test (orbit method) and the relational test (brute force) give identical counts | |
 | Section 7 and Section 8, equal layers, $F(n)$ | `python -m lower_bound.equal_layers` | `F(n)` = 242, 9300, 1032602 for $n=4,5,6$, equal to the direct count with 0 non-commuting pairs; 0 failures in the exhaustive $n=5$ and random layered-poset checks; writes `results/equal_layers.csv` | 3 s |

@@ -5,7 +5,9 @@ Simultaneous relabelling of A and B preserves commutation, hence
 so only one representative per class is tested against all B.  The same is done on the
 strict operators (quasi-orders on all n points) to get t(n).
 
-Usage:  python -m counts.orbit_count [--n-max 6] [--workers K] [--out results/counts.csv]
+The table is written as CSV only when --out is given.
+
+Usage:  python -m counts.orbit_count [--n-max 6] [--workers K] [--out FILE.csv]
 """
 
 from __future__ import annotations
@@ -86,7 +88,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--n-max", type=int, default=6)
     ap.add_argument("--workers", type=int, default=mp.cpu_count())
-    ap.add_argument("--out", type=Path, default=Path("results/counts.csv"))
+    ap.add_argument("--out", type=Path, default=None, help="write the table as CSV")
     args = ap.parse_args()
     assert 1 <= args.n_max <= MAX_N
 
@@ -104,6 +106,8 @@ def main() -> None:
               f"rho={row['rho']:.4f} rho_io={f.numerator}/{f.denominator}={float(f):.4f} "
               f"({time.time() - start:.1f}s)")
 
+    if args.out is None:
+        return
     args.out.parent.mkdir(parents=True, exist_ok=True)
     with args.out.open("w", newline="") as fh:
         w = csv.writer(fh, lineterminator="\n")
