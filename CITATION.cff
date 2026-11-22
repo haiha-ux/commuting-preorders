@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "The probability that two random Alexandrov interior operators commute is 2^{-Theta(n)}"
+type: software
+authors:
+  - family-names: "Ha Phan Thanh"
+    given-names: "Hai"
+    orcid: "https://orcid.org/0009-0008-6941-171X"
+license: MIT
+repository-code: "https://github.com/haiha-ux/commuting-preorders"
