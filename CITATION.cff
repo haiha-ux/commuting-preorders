@@ -2,6 +2,8 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 title: "The probability that two random finite topologies commute is 2^{-Theta(n)}"
 type: software
+version: 1.0.0
+date-released: "2026-11-23"
 authors:
   - family-names: "Ha Phan Thanh"
     given-names: "Hai"
