@@ -1,6 +1,7 @@
 # Companion code: commuting finite quasi-orders
 
 Code and Lean files for the paper *The probability that two random finite topologies commute is $2^{-\Theta(n)}$*.
+Preprint: [doi:10.5281/zenodo.24449622](https://doi.org/10.5281/zenodo.24449622).
 The repository computes the exact numbers of commuting pairs of quasi-orders and of Alexandrov interior operators for $n\le 6$, checks them independently, tests the equal-layers family behind the lower bound, and formalises the structural statements in Lean 4 without Mathlib.
 
 ## Reproducing the paper
