@@ -14,6 +14,7 @@ Commands are run from the repository root after the setup below. Times are wall-
 | Section 4, independent check, $n\le5$ | `python -m counts.brute_force` | same $\mathrm{io},T,\mathrm{cio},t$ for $n\le5$ from the definition $A(B(S))=B(A(S))$, and $t$ again from $R\circ S=S\circ R$; last line `brute force agrees ...` | 30 s |
 | Section 3, Proposition on the criterion | same two commands | the fixed-point test (orbit method) and the relational test (brute force) give identical counts | |
 | Section 7 and Section 8, equal layers, $F(n)$ | `python -m lower_bound.equal_layers` | `F(n)` = 242, 9300, 1032602 for $n=4,5,6$, equal to the direct count with 0 non-commuting pairs; 0 failures in the exhaustive $n=5$ and random layered-poset checks; writes `results/equal_layers.csv` | 3 s |
+| Appendix B, parameter choice and class thresholds | `python -m linear_kr.check_appendix_b` and `python -m linear_kr.class_thresholds` | all class rates at least `3e-11` and conditions (P1)-(P4) true (`all rates >= 3e-11 and all conditions hold`); largest class threshold `1.75e+27`, asserted in (1e27, 1e28) | under 1 s each |
 | Section 2 and Section 3, Lean statements | `cd lean && lake build` | `Build completed successfully`; no `sorry` | under 1 min |
 
 In the tables, `T` is the number of quasi-orders, `io` the number of interior operators, `t` and `cio` the numbers of ordered commuting pairs of quasi-orders and of interior operators, `rho = t/T^2` and `rho_io = cio/io^2`.
@@ -22,7 +23,7 @@ In the tables, `T` is the number of quasi-orders, `io` the number of interior op
 
 ```
 python -m venv .venv && . .venv/bin/activate
-pip install -r requirements.txt     # numpy
+pip install -r requirements.txt     # numpy, mpmath
 ```
 
 Python 3.10 or later. The orbit count uses `fork` multiprocessing (Linux, macOS); `--workers` sets the number of processes (default: all cores). The programs are limited to $n\le6$.
